@@ -19,7 +19,7 @@ on:
 
 jobs:
   RSpec:
-    name: Rails ${{ matrix.rails }}, Ruby ${{ matrix.ruby }}, ${{ matrix.database }}, ${{ matrix.storage }}
+    name: Rails ${{ matrix.rails }}, Ruby ${{ matrix.ruby }}, ${{ matrix.database }}, ${{ matrix.storage }}, ${{ matrix.asset_pipeline || 'sprockets' }}
     # NOTE: ubuntu-24.04 is required for libvips 8.13+. ActiveStorage 8.1 refuses to
     # load with older libvips, because it cannot disable the unfuzzed operations that
     # are unsafe on untrusted content. ubuntu-22.04 only ships libvips 8.12.1.
@@ -44,8 +44,10 @@ jobs:
             ruby: "4.0"
             database: postgres
             storage: activestorage
+            asset_pipeline: propshaft
     env:
       ARTIFACTS_DIR: ${{ github.workspace }}/${{ inputs.lib_name }}/artifacts
+      ASSET_PIPELINE: ${{ matrix.asset_pipeline || 'sprockets' }}
       BUNDLE_WITHOUT: "lint release"
       COVERAGE_DIR: ${{ github.workspace }}/${{ inputs.lib_name }}/coverage
       DB: ${{ matrix.database }}
