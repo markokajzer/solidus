@@ -5,6 +5,7 @@ module Spree
     class BaseController < Spree::BaseController
       include Spree::Core::ControllerHelpers::Timezone
 
+      helper "spree/admin/assets"
       helper "spree/admin/navigation"
       layout "spree/layouts/admin"
 

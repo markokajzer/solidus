@@ -37,9 +37,6 @@
 </script>
 
 <% select2_locale_path = "solidus_admin/select2_locales/select2_locale_#{I18n.locale}.js" %>
-<% if I18n.locale != :en && I18n.locale && (
-    Rails.application.assets&.find_asset(select2_locale_path) || # compiled on the fly
-    Rails.application.assets_manifest.assets[select2_locale_path] # precompiled
-) %>
+<% if I18n.locale != :en && I18n.locale && admin_asset_exists?(select2_locale_path) %>
   <%= javascript_include_tag select2_locale_path, data: {turbolinks_track: 'reload'} %>
 <% end %>

@@ -16,6 +16,10 @@ Can be found in [app/assets/stylesheets/spree/backend/](./app/assets/stylesheets
 
 The stylesheets are written in SCSS and include all of [Bourbon](http://bourbon.io/docs/) and [Bootstrap 4 alpha](http://v4-alpha.getbootstrap.com/).
 
+### Propshaft
+
+With Sprockets, the host app compiles the backend's assets as before. With Propshaft, add [dartsass-rails](https://github.com/rails/dartsass-rails) to the app: the backend registers its themes as dartsass builds, so `bin/rails dartsass:build` (run by `assets:precompile`) and `bin/rails dartsass:watch` compile them alongside the app's own stylesheets. JavaScript needs no build step; the admin layout loads the backend's files individually.
+
 When running the application there is a styleguide available at:
 
 ```

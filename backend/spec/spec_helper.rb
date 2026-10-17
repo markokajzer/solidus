@@ -18,12 +18,31 @@ end
 # from the project root directory.
 ENV["RAILS_ENV"] ||= "test"
 
+propshaft = ENV["ASSET_PIPELINE"] == "propshaft"
+
+if propshaft
+  require "rails"
+  require "propshaft"
+  require "dartsass-rails"
+end
+
 require "solidus_backend"
 require "spree/testing_support/dummy_app"
+
+if propshaft
+  FileUtils.mkdir_p(File.expand_path("dummy/app/assets/builds", __dir__))
+  DummyApp::Application.config.dartsass.builds = {}
+end
+
 DummyApp.setup(
   gem_root: File.expand_path("..", __dir__),
   lib_name: "solidus_backend"
 )
+
+if propshaft
+  require "dartsass/runner"
+  system(*Dartsass::Runner.dartsass_compile_command, "--quiet-deps", "--silence-deprecation=import", exception: true)
+end
 
 require "rails-controller-testing"
 require "rspec-activemodel-mocks"

@@ -37,6 +37,9 @@ gem "i18n-tasks", "~> 1.1.0", require: false
 gem "rspec_junit_formatter", require: false
 gem "yard", require: false
 
+gem "dartsass-rails", require: false
+gem "propshaft", require: false
+
 if ENV["GITHUB_ACTIONS"]
   gem "rspec-github", "~> 3.0", require: false
 end
