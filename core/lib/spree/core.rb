@@ -7,7 +7,14 @@ require "active_job/railtie"
 require "active_model/railtie"
 require "active_record/railtie"
 require "active_storage/engine"
-require "sprockets/railtie"
+
+unless defined?(Propshaft)
+  begin
+    require "sprockets/railtie"
+  rescue LoadError
+    # No asset pipeline installed
+  end
+end
 
 require "active_support/deprecation"
 require "spree/deprecated_instance_variable_proxy"
