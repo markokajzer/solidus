@@ -1,0 +1,29 @@
+/*!
+ *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+
+@import "font-awesome/variables";
+@import "font-awesome/mixins";
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url("fontawesome-webfont.eot");
+  src: url("fontawesome-webfont.woff2") format('woff2'),
+    url("fontawesome-webfont.woff") format('woff'),
+    url("fontawesome-webfont.ttf") format('truetype'),
+    url("fontawesome-webfont.svg") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import "font-awesome/core";
+@import "font-awesome/larger";
+@import "font-awesome/fixed-width";
+@import "font-awesome/list";
+@import "font-awesome/bordered-pulled";
+@import "font-awesome/animated";
+@import "font-awesome/rotated-flipped";
+@import "font-awesome/stacked";
+@import "font-awesome/icons";
+@import "font-awesome/screen-reader";
